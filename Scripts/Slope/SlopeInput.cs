@@ -22,7 +22,8 @@ public class SlopeInput : MonoBehaviour
 
     private void Awake()
     {
-
+        submitBtn.GetComponent<Button>().onClick.AddListener(SubmitBtnOnClick);
+        Time.timeScale = 0;
     }
 
     public void SubmitBtnOnClick()
@@ -34,5 +35,11 @@ public class SlopeInput : MonoBehaviour
             friction = float.Parse(friction.text)
         };
 
+        Time.timeScale = 1;
+
+        inputPanel.SetActive(false);
+        SlopeData.Instance.getCurrentData(data);
+        SlopeData.Instance.CreateObject(main.text, data);
+        //outputPanel.SetActive(true);
     }
 }

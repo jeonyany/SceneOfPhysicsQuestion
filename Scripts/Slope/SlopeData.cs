@@ -8,10 +8,12 @@ public class SlopeData : Singleton<SlopeData>
      public SlopeData_SO currentData;
      private Dictionary<int, string> inputsIndex = new Dictionary<int, string>()
      {
-          {0,"木块/物体"},
-          {1,"斜面/斜坡"}
+          {0,"斜面/斜坡"},
+          {1,"物体"}
 
      };
+
+     public GameObject res;
 
      //获得当前data
      public void getCurrentData(SlopeData_SO data)
@@ -24,6 +26,9 @@ public class SlopeData : Singleton<SlopeData>
           {
                if (item.Value.Contains(name))
                {
+                    res = Instantiate(prefabsList[item.Key].model);
+                    res.GetComponent<Rigidbody>().mass = data.mass;
+                    res.AddComponent<SlopeMotion>();
                     
                }
           }

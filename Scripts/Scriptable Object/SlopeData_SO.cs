@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class SlopeData_SO : ScriptableObject
 {
-    public GameObject slope;
+    public GameObject model;
     public int angle;
     public int length = 0;
     public int height = 0;

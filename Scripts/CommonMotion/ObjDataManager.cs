@@ -27,6 +27,7 @@ public class ObjDataManager : Singleton<ObjDataManager>
                {
                     res = Instantiate(prefabsList[item.Key].model);
                     res.GetComponent<Rigidbody>().mass = data.mass;
+                    res.AddComponent<ObjectMotion>();
                }
           }
      }

@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 263efb2523ac4437bb76d628c8f15a5d, type: 3}
-  m_Name: Slope
+  m_Name: Slope_Box
   m_EditorClassIdentifier: 
-  model: {fileID: 4954423097721899964, guid: 53375fe9fd6b644ff8420292a363af22, type: 3}
+  model: {fileID: 9042905436505784625, guid: ff7e4fdc3f36b4baf8f60b43b4c01488, type: 3}
   angle: 0
   length: 0
   height: 0
