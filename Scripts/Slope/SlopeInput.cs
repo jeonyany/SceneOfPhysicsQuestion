@@ -33,12 +33,14 @@ public class SlopeInput : MonoBehaviour
 
     public void SubmitBtnOnClick()
     {
+        //修改斜面
         Quaternion slopeAngle = Quaternion.Euler(0, 0, int.Parse(angle.text));
         slope.transform.localRotation = slopeAngle;
 
         slope.gameObject.SetActive(true);
         
 
+        //创建物体数据对象
         SlopeData_SO data = new SlopeData_SO
         {
             angle = int.Parse(angle.text),
@@ -49,6 +51,7 @@ public class SlopeInput : MonoBehaviour
 
         Time.timeScale = 1;
 
+        //创建物体&显示信息
         inputPanel.SetActive(false);
         SlopeData.Instance.getCurrentData(data);
         SlopeData.Instance.CreateObject(main.text, data);

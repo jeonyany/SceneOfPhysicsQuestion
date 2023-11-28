@@ -30,13 +30,16 @@ public class SlopeData : Singleton<SlopeData>
                {
                     res = Instantiate(prefabsList[item.Key].model);
                     res.GetComponent<Rigidbody>().mass = data.mass;
+                    //添加脚本、碰撞体组件
                     res.AddComponent<SlopeMotion>();
                     res.AddComponent<BoxCollider>();
+                    //修改基本transform信息
                     res.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
                     Quaternion slopeAngle = Quaternion.Euler(0, 0, data.angle);
                     res.transform.localRotation = slopeAngle;
                     res.transform.position = data.position;
                     res.GetComponent<Rigidbody>().isKinematic = false;
+                    //设置材质
                     res.GetComponent<BoxCollider>().material = material;
                }
           }

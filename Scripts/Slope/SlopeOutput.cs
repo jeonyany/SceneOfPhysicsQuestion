@@ -11,7 +11,6 @@ public class SlopeOutput : MonoBehaviour
 
     private SlopeData_SO data;
     private float realTime;//计时器
-    private float dis;
     private bool isCounting;
     private GameObject obj;
 
@@ -35,11 +34,6 @@ public class SlopeOutput : MonoBehaviour
         if (isCounting)
         {
             realTime += Time.deltaTime;
-            if (obj.transform.position.x == dis)
-            {
-                isCounting = false;
-                //Console.WriteLine("停止计时");
-            }
             time.text = realTime.ToString("f1");
         }
     }
