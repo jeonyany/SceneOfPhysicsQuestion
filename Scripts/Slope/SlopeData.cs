@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class SlopeData : Singleton<SlopeData>
 {
-    public List<SlopeData_SO> prefabsList = new List<SlopeData_SO>();
+     public List<SlopeData_SO> prefabsList = new List<SlopeData_SO>();
      public SlopeData_SO currentData;
      private Dictionary<int, string> inputsIndex = new Dictionary<int, string>()
      {
@@ -14,14 +15,15 @@ public class SlopeData : Singleton<SlopeData>
      };
 
      public GameObject res;
-
+     public PhysicMaterial material;
      //获得当前data
      public void getCurrentData(SlopeData_SO data)
      {
           currentData = data;
      }
-     public void CreateObject(string name,SlopeData_SO data)
+     public void CreateObject(string name, SlopeData_SO data)
      {
+          material.staticFriction = data.friction;
           foreach (var item in inputsIndex)
           {
                if (item.Value.Contains(name))
@@ -29,9 +31,19 @@ public class SlopeData : Singleton<SlopeData>
                     res = Instantiate(prefabsList[item.Key].model);
                     res.GetComponent<Rigidbody>().mass = data.mass;
                     res.AddComponent<SlopeMotion>();
-                    
+                    res.AddComponent<BoxCollider>();
+                    res.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+                    Quaternion slopeAngle = Quaternion.Euler(0, 0, data.angle);
+                    res.transform.localRotation = slopeAngle;
+                    res.transform.position = data.position;
+                    res.GetComponent<Rigidbody>().isKinematic = false;
+                    res.GetComponent<BoxCollider>().material = material;
                }
           }
      }
 
+     public GameObject SetObject()
+     {
+          return res;
+     }
 }

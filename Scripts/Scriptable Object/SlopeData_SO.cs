@@ -12,4 +12,7 @@ public class SlopeData_SO : ScriptableObject
     public int height = 0;
     public int mass;
     public float friction;
+
+    public Vector3 position;
+    
 }
