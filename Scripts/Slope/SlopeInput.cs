@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -29,6 +28,7 @@ public class SlopeInput : MonoBehaviour
     {
         submitBtn.GetComponent<Button>().onClick.AddListener(SubmitBtnOnClick);
         Time.timeScale = 0;
+        //param = SceneController.Instance.entityData;
     }
 
     public void SubmitBtnOnClick()
